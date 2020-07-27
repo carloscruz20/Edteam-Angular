@@ -1,0 +1,35 @@
+<div class="card-container" *ngIf="apod">
+  <mat-card class="card-content">
+    <h3>Astronomy Picture of the day</h3>
+     <mat-card-header>
+       <img mat-card-avatar src="https://media3.giphy.com/media/ibX2ciTkAlSGA/giphy.gif">
+       <mat-card-title>{{apod.title}}</mat-card-title>
+       <mat-card-subtitle>{{apod.date | date:'fullDate'}}</mat-card-subtitle>
+     </mat-card-header>
+
+     <img mat-card-image [src]="apod.url" >
+
+     <mat-card-content>
+       <p>{{apod.explanation}}</p>
+     </mat-card-content>
+
+     <mat-card-actions>
+       <button mat-button>Like</button>
+       <button mat-button>Share</button>
+     </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="card-container" *ngIf="!apod && !error">
+  <mat-progress-bar mode="buffer" class="card-content"></mat-progress-bar>
+</div>
+
+<div *ngIf="error">
+  <mat-card class="card-content">
+    {{error}}
+  </mat-card>
+</div>
+<!--<div>
+  Sin Pipe:{{apod.title}}
+  Con Pipe:{{apod.title | lowerCase}}
+</div>-->
